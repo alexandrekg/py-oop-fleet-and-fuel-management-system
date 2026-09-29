@@ -17,7 +17,7 @@ The system must ensure that a vehicle:
 2. Cannot receive more fuel than its tank capacity allows.
 3. Updates its odometer proportionally only to the distance actually driven.
 
-## ⚙️ Requirements for the `Veiculo` (Vehicle) Class
+## ⚙️ Requirements for the `Vehicle` Class
 
 ### Protected/Private Attributes
 
@@ -29,21 +29,18 @@ The system must ensure that a vehicle:
 
 ### Mandatory Methods
 
-#### 1. `abastecer(litros: float) -> None`
-
+#### 1. `refuel(liters: float) -> None`
 * Refuels the tank.
-* **Rule:** If the added liters exceed the tank capacity, cap the fuel level at maximum and output a warning showing the overflow amount.
+* **Rule:** If the added liters exceed the tank capacity, cap the fuel level at maximum capacity and output a warning showing the overflow amount.
 * **Rule:** Ignore or handle values less than or equal to zero.
 
-#### 2. `dirigir(distancia_km: float) -> None`
-
+#### 2. `drive(distance_km: float) -> None`
 * Simulates a trip.
-* **Rule:** Calculates required fuel (`distancia_km / consumo_medio`).
+* **Rule:** Calculates required fuel (`distance_km / fuel_efficiency`).
 * **If there is enough fuel:** Deducts the fuel and increments the odometer by the total distance.
 * **If NOT enough fuel:** Drives only the maximum possible distance with the remaining fuel, empties the tank (`0.0`), updates the odometer by the driven distance, and outputs an empty-tank alert.
 
 #### 3. `get_status() -> dict` or `__str__()`
-
 * Returns a human-readable representation of the vehicle's current state.
 
 ## 🧪 Suggested Test Cases
