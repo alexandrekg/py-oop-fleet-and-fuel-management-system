@@ -1,31 +1,33 @@
 class Vehicle:
     def __init__(self, model, tank_capacity, fuel_efficiency, fuel_level=0.0, odometer=0.0):
-        self.model: str = model
-        self.tank_capacity: float = tank_capacity
-        self.fuel_level: float = fuel_level
-        self.fuel_efficiency: float = fuel_efficiency
-        self.odometer: float = odometer
+        self._model: str = model
+        self._tank_capacity: float = tank_capacity
+        self._fuel_level: float = fuel_level
+        self._fuel_efficiency: float = fuel_efficiency
+        self._odometer: float = odometer
     
     def drive(self, distance_km: float) -> None:
-        required_fuel = distance_km / self.fuel_efficiency
-        if required_fuel <= self.fuel_level:
-            self.fuel_level -= required_fuel
-            self.odometer += distance_km
+        required_fuel = distance_km / self._fuel_efficiency
+        if required_fuel <= self._fuel_level:
+            self._fuel_level -= required_fuel
+            self._odometer += distance_km
         else:
-            self.odometer += self.fuel_level * self.fuel_efficiency
-            self.fuel_level = 0.0
+            self._odometer += self._fuel_level * self._fuel_efficiency
+            self._fuel_level = 0.0
             print("Alert! Empty Tank.")
     
     def refuel(self, liters: float) -> None:
         if liters > 0:
-            if liters > self.tank_capacity:
-                self.fuel_level = self.tank_capacity
-                print(f"Alert! Fuel Level exceeds tank capacity by {liters - self.tank_capacity} liters")
+            total = self._fuel_level + liters
+            if total > self._tank_capacity:
+                overflow = total - self._tank_capacity 
+                self._fuel_level = self._tank_capacity
+                print(f"Alert! Fuel Level exceeds tank capacity by {overflow} liters")
             else:
-                self.fuel_level = liters
+                self._fuel_level += liters
         
     def __str__(self):
-        return f"Model {self.model}:  total capacity {self.tank_capacity}, fuel level {self.fuel_level}, fuel efficiency {self.fuel_efficiency}, odometer {self.odometer}"
+        return f"Model {self._model}:  total capacity {self._tank_capacity}, fuel level {self._fuel_level}, fuel efficiency {self._fuel_efficiency}, odometer {self._odometer}"
     
 
 # 1. Instantiation
