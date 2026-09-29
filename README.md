@@ -21,11 +21,11 @@ The system must ensure that a vehicle:
 
 ### Protected/Private Attributes
 
-* `modelo` (`str`): Vehicle name/identifier (e.g., `"Delivery Van"`).
-* `capacidade_tanque` (`float`): Maximum fuel tank capacity in liters.
-* `nivel_combustivel` (`float`): Current fuel level in liters.
-* `consumo_medio` (`float`): Fuel efficiency in km/L (e.g., `10.0`).
-* `odometro` (`float`): Total mileage covered (starts at `0.0`).
+* `model` (`str`): Vehicle name/identifier (e.g., `"Delivery Van"`).
+* `tank_capacity` (`float`): Maximum fuel tank capacity in liters.
+* `fuel_level` (`float`): Current fuel level in liters (starts at `0.0` or as provided in constructor).
+* `fuel_efficiency` (`float`): Fuel consumption efficiency in km/L (e.g., `10.0`).
+* `odometer` (`float`): Total mileage covered in km (starts at `0.0`).
 
 ### Mandatory Methods
 
